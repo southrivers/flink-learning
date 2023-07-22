@@ -32,7 +32,7 @@ import java.util.StringJoiner;
  * >sensor_1,1547718209,34.5
  * >sensor_1,1547718210,67.8
  * >sensor_2,1547718209,34.5
- * >sensor_2,1547718210,32.5
+ * >sensor_2,1547718210,32.5 -- 这里也可以是sensor_1，因为发送到kafka里面的数据在缺失key的情况下是采用roundrobin的方法来的
  * >sensor_3,1547718210,34.5
  * >sensor_4,1547718210,34.5
  */
