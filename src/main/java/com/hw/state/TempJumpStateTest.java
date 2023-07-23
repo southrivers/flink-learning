@@ -8,6 +8,9 @@ import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.contrib.streaming.state.RocksDBStateBackend;
+import org.apache.flink.runtime.state.filesystem.FsStateBackend;
+import org.apache.flink.runtime.state.memory.MemoryStateBackend;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
@@ -26,6 +29,13 @@ public class TempJumpStateTest {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+
+        // 状态存放在taskmanager上面，checkpoint数据存放在jobmanager的内存上
+        env.setStateBackend(new MemoryStateBackend());
+        // 状态存放在taskmanager上面，checkpoint数据存放在hdfs上
+        env.setStateBackend(new FsStateBackend(""));
+        // 状态存在rocksdb里面，checkpoint数据存放在hdfs上
+        env.setStateBackend(new RocksDBStateBackend(""));
 
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.28.5:9092");
