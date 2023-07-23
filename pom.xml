@@ -45,6 +45,25 @@
           <artifactId>flink-statebackend-rocksdb_2.12</artifactId>
           <version>1.10.1</version>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
+      <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-common</artifactId>
+          <version>3.2.4</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs -->
+      <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-hdfs</artifactId>
+          <version>3.2.4</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client -->
+      <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-client</artifactId>
+          <version>3.2.4</version>
+      </dependency>
+
   </dependencies>
     <build>
         <plugins>
